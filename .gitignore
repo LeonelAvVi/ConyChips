@@ -9,7 +9,8 @@
 /coverage
 
 # production
-
+firebase-debug.log
+.github
 
 # misc
 .DS_Store

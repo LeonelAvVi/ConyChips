@@ -1,0 +1,86 @@
+[debug] [2023-04-30T17:11:25.732Z] ----------------------------------------------------------------------
+[debug] [2023-04-30T17:11:25.737Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy --debug
+[debug] [2023-04-30T17:11:25.738Z] CLI Version:   11.29.1
+[debug] [2023-04-30T17:11:25.738Z] Platform:      win32
+[debug] [2023-04-30T17:11:25.738Z] Node Version:  v16.14.0
+[debug] [2023-04-30T17:11:25.739Z] Time:          Sun Apr 30 2023 13:11:25 GMT-0400 (hora de Bolivia)
+[debug] [2023-04-30T17:11:25.740Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-30T17:11:25.908Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-30T17:11:25.911Z] > authorizing via signed-in user (conychips.dev@gmail.com)
+[debug] [2023-04-30T17:11:25.914Z] [iam] checking project conychips-564c9 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-04-30T17:11:25.917Z] > refreshing access token with scopes: []
+[debug] [2023-04-30T17:11:25.921Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-04-30T17:11:25.922Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-30T17:11:26.249Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-04-30T17:11:26.250Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-30T17:11:26.272Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/conychips-564c9:testIamPermissions [none]
+[debug] [2023-04-30T17:11:26.273Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/conychips-564c9:testIamPermissions x-goog-quota-user=projects/conychips-564c9
+[debug] [2023-04-30T17:11:26.275Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/conychips-564c9:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T17:11:27.321Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/conychips-564c9:testIamPermissions 200
+[debug] [2023-04-30T17:11:27.321Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/conychips-564c9:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T17:11:27.325Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/conychips-564c9 [none]
+[debug] [2023-04-30T17:11:27.785Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/conychips-564c9 200
+[debug] [2023-04-30T17:11:27.786Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/conychips-564c9 {"projectId":"conychips-564c9","projectNumber":"79572394882","displayName":"ConyChips","name":"projects/conychips-564c9","resources":{"hostingSite":"conychips-564c9"},"state":"ACTIVE","etag":"1_f1f7537b-dc51-4b73-a093-ccecfe579991"}
+[info] 
+[info] === Deploying to 'conychips-564c9'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-04-30T17:11:27.801Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/versions [none]
+[debug] [2023-04-30T17:11:27.801Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-04-30T17:11:29.174Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/versions 200
+[debug] [2023-04-30T17:11:29.174Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/versions {"name":"projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[conychips-564c9]: beginning deploy... 
+[info] i  hosting[conychips-564c9]: found 14 files in build 
+[debug] [2023-04-30T17:11:29.197Z] [hosting] uploading with 200 concurrency
+[debug] [2023-04-30T17:11:29.216Z] [hosting] hash cache [YnVpbGQ] stored for 14 files
+[debug] [2023-04-30T17:11:29.217Z] [hosting][hash queue][FINAL] {"max":3,"min":1,"avg":1,"active":0,"complete":14,"success":14,"errored":0,"retried":0,"total":14,"elapsed":9}
+[debug] [2023-04-30T17:11:29.218Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe:populateFiles [none]
+[debug] [2023-04-30T17:11:29.219Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe:populateFiles {"files":{"/asset-manifest.json":"918ddcf137a307b9f83890afbec842ff4af2a7c2978e374724ef8f87dee57e91","/favicon.ico":"eae62e993eb980ec8a25058c39d5a51feab118bd2100c4deebb2a9c158ec11f9","/index.html":"c3e3564b3be86954e0f71bbdd9cf5cdd3f8f567783fabeaa71f6b50d2f79a51b","/logo192.png":"3ee59515172ee198f3be375979df15ac5345183e656720a381b8872b2a39dc8b","/logo512.png":"ee7e2f3fdb8209c4b6fd7bef6ba50d1b9dba30a25bb5c3126df057e1cb6f5331","/manifest.json":"aff3449bdc238776f5d6d967f19ec491b36aed5fb7f23ccff6500736fd58494a","/robots.txt":"bfe106a3fb878dc83461c86818bf74fc1bdc7f28538ba613cd3e775516ce8b49","/static/css/main.756af292.css":"5e1217f7e74974387b3e1d5a774d3ea069ac28c28ce1de401d141fefbdc3f0fc","/static/css/main.756af292.css.map":"40414455c6cb721db828ab6b2632a147130cccc31970241206ecdca787160a84","/static/js/787.846f2c3d.chunk.js":"93327f1ccf8f6671cd7a7ba9910b54cce42ac3368f78850403e09436b0d962a0","/static/js/787.846f2c3d.chunk.js.map":"bb2af81aaab721f44ed58457ab35d99847919f079824ddf5560e9795bfdbf512","/static/js/main.673873cb.js":"2b161d66c70b00efba49e40b7d53266390c67311971342387ed600f4c258c7ab","/static/js/main.673873cb.js.LICENSE.txt":"886994b8d8529d0caf95c7df0381ee63d2487b99e6880c46fb49ddfeca1c838e","/static/js/main.673873cb.js.map":"5fa43ed0b1861888de9f0f89e939817aa8ebb068b17142efa3cc1030461912f3"}}
+[debug] [2023-04-30T17:11:30.303Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe:populateFiles 200
+[debug] [2023-04-30T17:11:30.303Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/conychips-564c9/versions/61f4a553f5555cbe/files"}
+[debug] [2023-04-30T17:11:30.306Z] [hosting][populate queue][FINAL] {"max":1093,"min":1093,"avg":1093,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1094}
+[debug] [2023-04-30T17:11:30.307Z] [hosting] uploads queued: 0
+[debug] [2023-04-30T17:11:30.308Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1682874690308}
+[info] i  hosting: upload complete 
+[info] +  hosting[conychips-564c9]: file upload complete 
+[debug] [2023-04-30T17:11:30.309Z] [hosting] deploy completed after 1130ms
+[debug] [2023-04-30T17:11:30.313Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "conychips-564c9"
+    },
+    "version": "projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe"
+  }
+]
+[info] i  hosting[conychips-564c9]: finalizing version... 
+[debug] [2023-04-30T17:11:30.320Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/versions/61f4a553f5555cbe updateMask=status%2Cconfig
+[debug] [2023-04-30T17:11:30.321Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/versions/61f4a553f5555cbe {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2023-04-30T17:11:31.419Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/versions/61f4a553f5555cbe 200
+[debug] [2023-04-30T17:11:31.420Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/versions/61f4a553f5555cbe {"name":"projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-04-30T17:11:32.145617Z","createUser":{"email":"conychips.dev@gmail.com"},"finalizeTime":"2023-04-30T17:11:34.685959Z","finalizeUser":{"email":"conychips.dev@gmail.com"}}
+[debug] [2023-04-30T17:11:31.421Z] [hosting] finalized version for conychips-564c9:[object Object]
+[info] +  hosting[conychips-564c9]: version finalized 
+[info] i  hosting[conychips-564c9]: releasing new version... 
+[debug] [2023-04-30T17:11:31.425Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/channels/live/releases versionName=projects%2F79572394882%2Fsites%2Fconychips-564c9%2Fversions%2F61f4a553f5555cbe
+[debug] [2023-04-30T17:11:31.426Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/channels/live/releases {}
+[debug] [2023-04-30T17:11:32.509Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/channels/live/releases 200
+[debug] [2023-04-30T17:11:32.509Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/conychips-564c9/channels/live/releases {"name":"projects/79572394882/sites/conychips-564c9/channels/live/releases/1682874695194000","version":{"name":"projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-04-30T17:11:32.145617Z","createUser":{"email":"conychips.dev@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AGNmyxbgpWLurGW9cWD-wjj-rm6GeILHaTbs16NVeIio=mo"},"finalizeTime":"2023-04-30T17:11:34.685959Z","finalizeUser":{"email":"conychips.dev@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AGNmyxbgpWLurGW9cWD-wjj-rm6GeILHaTbs16NVeIio=mo"}},"type":"DEPLOY","releaseTime":"2023-04-30T17:11:35.194Z","releaseUser":{"email":"conychips.dev@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AGNmyxbgpWLurGW9cWD-wjj-rm6GeILHaTbs16NVeIio=mo"}}
+[debug] [2023-04-30T17:11:32.511Z] [hosting] release: {"name":"projects/79572394882/sites/conychips-564c9/channels/live/releases/1682874695194000","version":{"name":"projects/79572394882/sites/conychips-564c9/versions/61f4a553f5555cbe","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-04-30T17:11:32.145617Z","createUser":{"email":"conychips.dev@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AGNmyxbgpWLurGW9cWD-wjj-rm6GeILHaTbs16NVeIio=mo"},"finalizeTime":"2023-04-30T17:11:34.685959Z","finalizeUser":{"email":"conychips.dev@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AGNmyxbgpWLurGW9cWD-wjj-rm6GeILHaTbs16NVeIio=mo"}},"type":"DEPLOY","releaseTime":"2023-04-30T17:11:35.194Z","releaseUser":{"email":"conychips.dev@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AGNmyxbgpWLurGW9cWD-wjj-rm6GeILHaTbs16NVeIio=mo"}}
+[info] +  hosting[conychips-564c9]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/conychips-564c9/overview
+[info] Hosting URL: https://conychips-564c9.web.app
