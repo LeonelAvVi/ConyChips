@@ -193,13 +193,13 @@ function App() {
     setCart([]);
     setTotal(0);
     setCantidad("");
-    let conys2 = conys;
     setConys([]);
     
   }
 
   useEffect(() => {
     setConys(dataConys);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conys]);
 
   const addCart = (data) => {
@@ -230,7 +230,7 @@ function App() {
     }
     ///guardar en el firebase 
     try {
-      const docRef = await addDoc(collection(db, "ventas_dia"), data);
+      await addDoc(collection(db, "ventas_dia"), data);
       resetValues();
       setLoading(false);
     } catch (err) {
@@ -280,11 +280,11 @@ function App() {
       total += item.total;
     });
 
-    const docRef = await addDoc(collection(db, "sales"), {
+    await addDoc(collection(db, "sales"), {
       total,
       dia,
       hora : fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds(),
-      costos: costos[0],
+      costos: costos[0]?costos[0]:0 ,
       data,
     });
     console.log(total);

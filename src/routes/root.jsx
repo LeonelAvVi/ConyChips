@@ -1,6 +1,6 @@
-import {NavLink, redirect, Form, useLoaderData, Link, Outlet } from 'react-router-dom';
+import {NavLink, redirect, Outlet } from 'react-router-dom';
 import { getContacts , createContact} from '../contacts';
-import { Container, Row, Col, Modal } from 'react-bootstrap';
+import { Container, Row, Modal } from 'react-bootstrap';
 import {BsFillClipboard2MinusFill, BsCartFill, BsBagFill,BsPersonCircle} from 'react-icons/bs';
 import React from 'react';
 
@@ -18,7 +18,7 @@ export default function Root() {
   const [login, setLogin] = React.useState(false);
   const [showModal , setShowModal] = React.useState(false);
   const [user , setUser] = React.useState("");
-    const { contacts } = useLoaderData();
+  
     return (
       <>
         <Modal
@@ -146,7 +146,7 @@ export default function Root() {
           :
           (
             <div
-            className="rounded-top fixed-bottom p-2"
+            className="d-flex flex-column justify-content-center align-items-center  fixed-bottom p-2"
             >
               <BsPersonCircle
                 color = "white"
@@ -154,6 +154,15 @@ export default function Root() {
                 onClick={() => setShowModal(true)}
                 className='mx-auto d-block'
               />
+              <p
+                className='mx-auto d-block p-2'
+                style={{
+                  color: "white",
+                  zIndex: "10000",
+                  fontSize: "8px",
+                  margin : "auto"
+                }}
+              >v.1.1.0</p>
             </div>
             
           )

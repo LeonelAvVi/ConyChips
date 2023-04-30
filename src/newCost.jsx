@@ -3,7 +3,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import React,{useState, useRef,useEffect} from 'react';
 import { Container, Row, Col, Button,Table , Modal} from 'react-bootstrap';
 import {BsPlus, BsXCircleFill, BsPencil, BsTrash,BsCheckCircleFill} from 'react-icons/bs';
-import { doc,  collection, addDoc  } from "firebase/firestore";
+import { collection, addDoc  } from "firebase/firestore";
 import { db } from './config/firebaseConfig';
 import { Navigate } from "react-router-dom";
 
@@ -121,7 +121,7 @@ export default function Contact() {
     }
 
     try {
-      const docRef = await addDoc(collection(db, "cost"), data);
+      await addDoc(collection(db, "cost"), data);
       setLoad(false);
       setError(false);
 

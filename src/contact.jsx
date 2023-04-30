@@ -53,6 +53,7 @@ export default function Contact() {
       if(cost.fecha === fecha){
         dataCost.push(cost);
       }
+      return false;
     });
     setData(dataCost);
   }

@@ -13,12 +13,7 @@ import Sale from './sale';
 
 import Root, {loader as rootLoader, action as rootAction,} from './routes/root';
 import ErrorPage from './error-page';
-import Contact, {
-  loader as contactLoader,
-} from './contact';
-import EditContact, {
-  action as editAction,
-} from "./edit";
+import Contact from './contact';
 
 
 const router = createBrowserRouter([

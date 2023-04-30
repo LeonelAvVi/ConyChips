@@ -6,7 +6,6 @@ import {BsArrowLeftCircleFill, BsSearch, BsEye} from 'react-icons/bs';
 
 import { db } from './config/firebaseConfig';
 import {collection, getDocs } from 'firebase/firestore';
-import { Link } from "react-router-dom";
 
 export default function Sale() {
   const [modalShow , setModalShow] = useState(false);
@@ -58,6 +57,7 @@ export default function Sale() {
       if(cost.hora.includes(inputHora)){
         dataCost.push(cost);
       }
+      return false;
     });
     setDataDay(dataCost);
   }
@@ -70,6 +70,7 @@ export default function Sale() {
       if(cost.dia.includes(inputFecha)){
         dataCost.push(cost);
       }
+      return false;
     });
     setData(dataCost);
   }
