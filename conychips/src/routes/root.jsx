@@ -1,7 +1,8 @@
 import {NavLink, redirect, Form, useLoaderData, Link, Outlet } from 'react-router-dom';
 import { getContacts , createContact} from '../contacts';
-import { Container, Row, Col } from 'react-bootstrap';
-import {BsFillClipboard2MinusFill, BsCartFill, BsBagFill} from 'react-icons/bs';
+import { Container, Row, Col, Modal } from 'react-bootstrap';
+import {BsFillClipboard2MinusFill, BsCartFill, BsBagFill,BsPersonCircle} from 'react-icons/bs';
+import React from 'react';
 
 export async function action() {
     const contact = await createContact();
@@ -14,9 +15,43 @@ export async function loader() {
 }
 
 export default function Root() {
+  const [login, setLogin] = React.useState(false);
+  const [showModal , setShowModal] = React.useState(false);
+  const [user , setUser] = React.useState("");
     const { contacts } = useLoaderData();
     return (
       <>
+        <Modal
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          backdrop="static"
+          keyboard={false}
+          centered
+        >
+          <Modal.Body>
+            <h4 className="text-center">Iniciar Sesión</h4>
+            <input type="text" className="form-control" placeholder="Usuario" 
+              onChange={(e) => setUser(e.target.value)}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="btn btn-primary" onClick={() => {
+              if (user === "123456"){
+                setLogin(true);
+                setShowModal(false);
+              }
+              else
+                alert("Usuario incorrecto");
+            }}>
+              Iniciar
+            </button>
+            <button className="btn btn-danger" onClick={() => setShowModal(false)}>
+              Cancelar
+            </button>
+          </Modal.Footer>
+        </Modal>
+
+
         <div id="sidebar"
           className="d-flex flex-column justify-content-between align-content-start"
           style={{ height: "100vh" }}
@@ -29,7 +64,10 @@ export default function Root() {
           {/* <div>
               
           </div> */}
-          <nav
+
+          {
+            login ? (
+              <nav
             id="contacts"
             className="bg-warning rounded-top fixed-bottom"
           >
@@ -66,7 +104,7 @@ export default function Root() {
                   }}
                 >
                    <NavLink
-                    to={`contacts/`}
+                    to={`/`}
                     className={({ isActive, isPending }) =>
                       isActive
                         ? "active"
@@ -87,7 +125,7 @@ export default function Root() {
 
                 <li >
                    <NavLink
-                    to={`contacts/`}
+                    to={`/sale`}
                     className={({ isActive, isPending }) =>
                       isActive
                         ? "active"
@@ -104,6 +142,25 @@ export default function Root() {
                 </li>
             </ul>
           </nav>
+          )
+          :
+          (
+            <div
+            className="rounded-top fixed-bottom p-2"
+            >
+              <BsPersonCircle
+                color = "white"
+                size={32}
+                onClick={() => setShowModal(true)}
+                className='mx-auto d-block'
+              />
+            </div>
+            
+          )
+           
+
+          }
+          
         </div>
         
       </>

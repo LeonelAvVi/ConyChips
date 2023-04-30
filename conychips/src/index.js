@@ -8,15 +8,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NewCost from './newCost';
+import Sale from './sale';
 
 import Root, {loader as rootLoader, action as rootAction,} from './routes/root';
 import ErrorPage from './error-page';
 import Contact, {
   loader as contactLoader,
-} from './routes/contact';
+} from './contact';
 import EditContact, {
   action as editAction,
-} from "./routes/edit";
+} from "./edit";
 
 
 const router = createBrowserRouter([
@@ -34,13 +36,14 @@ const router = createBrowserRouter([
       {
         path: "contacts/",
         element: <Contact />,
-        loader: contactLoader,
       },
       {
-        path: "contacts/:contactId/edit",
-        element: <EditContact />,
-        loader: contactLoader,
-        action: editAction,
+        path: "/newCost",
+        element: <NewCost/>,
+      },
+      {
+        path: "/sale",
+        element: <Sale/>,
       },
     ],
     
