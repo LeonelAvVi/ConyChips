@@ -10,6 +10,9 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewCost from './newCost';
 import Sale from './sale';
+import Product from './product';
+import Statistics from './statistics';
+import UpdateCost from './updateCost';
 
 import Root, {loader as rootLoader, action as rootAction,} from './routes/root';
 import ErrorPage from './error-page';
@@ -37,8 +40,20 @@ const router = createBrowserRouter([
         element: <NewCost/>,
       },
       {
+        path: "/updateCost",
+        element: <UpdateCost/>,
+      },
+      {
         path: "/sale",
         element: <Sale/>,
+      },
+      {
+        path: "/product",
+        element: <Product/>,
+      },
+      {
+        path: "/statistics",
+        element: <Statistics/>,
       },
     ],
     

@@ -2,7 +2,7 @@ import React,{useState, useEffect, useRef} from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Container, Row, Col, Button,Table, Modal } from 'react-bootstrap';
-import {BsPlus, BsSearch, BsEye} from 'react-icons/bs';
+import {BsPlus, BsSearch, BsEye, BsPencilFill} from 'react-icons/bs';
 import { Link } from "react-router-dom";
 
 import { db } from './config/firebaseConfig';
@@ -27,7 +27,10 @@ export default function Contact() {
     try{
       const querySnapshot = await getDocs(collection(db, "cost"));
       querySnapshot.forEach((doc) => {
-          dataCost.push(doc.data());
+          dataCost.push({
+            id: doc.id,
+            ...doc.data()
+          });
         }
       );
         //ordenar por fecha
@@ -182,7 +185,7 @@ export default function Contact() {
                         <td 
                           style={{fontSize: "0.8rem"}}
                         >
-                          <Button variant="success" className="py-0 px-1 mx-auto"
+                          <Button variant="success" className="p-1 px-2 mx-auto"
                             onClick={() => {
                               setProducts(cost.productos);
                               setNameCost(cost.fecha);
@@ -191,6 +194,14 @@ export default function Contact() {
                           >
                             <BsEye className="fw-bold  fs-5"/>
                           </Button>
+                          <Link className="bg-primary fw-bold p-2 rounded shadow mx-1"
+                            style={{ textDecoration: "none", color: "white" }}
+                            //enviar producto a actualizar
+                            to="/updateCost"
+                            state={{cost}}
+                          >
+                            <BsPencilFill className="fw-bold  fs-5"/>
+                          </Link>
                         </td>
                       </tr>
                     ))
