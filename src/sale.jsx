@@ -2,10 +2,10 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import React,{useState, useEffect} from 'react';
 import { Container, Row, Col, Button,Table, Modal } from 'react-bootstrap';
-import {BsArrowLeftCircleFill, BsSearch, BsEye} from 'react-icons/bs';
+import {BsArrowLeftCircleFill, BsSearch, BsEye, BsTrash} from 'react-icons/bs';
 
 import { db } from './config/firebaseConfig';
-import {collection, getDocs } from 'firebase/firestore';
+import {collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 
 export default function Sale() {
   const [modalShow , setModalShow] = useState(false);
@@ -26,13 +26,21 @@ export default function Sale() {
     test();
   }, []);
 
+  useEffect(() => {
+    console.log(dataFull);
+    setData(dataFull);
+  }, [dataFull]);
+
   const test = async () => {
     let dataCost = [];
 
     try{
       const querySnapshot = await getDocs(collection(db, "sales"));
       querySnapshot.forEach((doc) => {
-          dataCost.push(doc.data());
+          dataCost.push({
+            id: doc.id,
+            ...doc.data()
+          });
         }
       );
         //ordenar por fecha
@@ -73,6 +81,34 @@ export default function Sale() {
       return false;
     });
     setData(dataCost);
+  }
+
+  const deleteSale = async (id) => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm(`¿Estas seguro de eliminar este registro?`)) {
+      try {
+        await deleteDoc(doc(db, "sales", id));
+        //deleteSaleDataFull(id);
+        test();
+      } catch(err) {
+        alert(err);
+      }
+    } else {
+      console.log("no");
+    }
+  }
+
+  const deleteSaleDataFull = async (id) => {
+    // eslint-disable-next-line no-restricted-globals
+    dataFull.filter((sale, index) => {
+      if(sale.id === id){
+        dataFull.splice(index, 1);
+      }
+      return false;
+    });
+    console.log(dataFull);
+    setDataFull(dataFull);
+    //setData(dataFull);
   }
 
   return (
@@ -304,10 +340,19 @@ export default function Sale() {
                               <td
                                 style={{fontSize: "0.8rem"}}
                               >
-                                <Button variant="success" className="py-0 px-1 mx-auto"
+                                <Button variant="success" className="py-0 px-1 mx-auto pb-1"
                                   onClick={() =>{setShowDay(true); setDataDay(item.data);setDataFullDay(item.data)}}
                                 >
-                                  <BsEye className="fw-bold  fs-5"/>
+                                  <BsEye className="fw-bold fs-5"/>
+                                </Button>
+                                
+                                <Button variant="danger" className="py-0 px-1 pb-1 ml-1"
+                                  style={{marginLeft: "0.5rem"}}
+                                  onClick={() =>{
+                                    deleteSale(item.id);
+                                  }}
+                                >
+                                  <BsTrash className="fw-bold  fs-5"/>
                                 </Button>
                               </td>
                             </tr>

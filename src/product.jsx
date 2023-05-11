@@ -322,7 +322,7 @@ export default function Contact() {
           </Col>
         </Row>
 
-        <Row className="align-content-start d-flex flex-row justify-content-between align-items-start bg-white py-2 rounded shadow mt-3"
+        <Row className="align-content-start d-flex flex-row justify-content-between align-items-start bg-white py-2 rounded shadow mt-3 pb-5"
           style={{height: "80vh", overflowY: "scroll"}}
         >
             {
@@ -343,7 +343,7 @@ export default function Contact() {
                       <BsTrashFill 
                         className="mx-1 text-danger"
                         
-                        size={24}
+                        size={20}
                         onClick={() => {setShowModal(true);setTypeModal("delete"); setIdProduct({
                           id:product.id,
                           name:product.name,
@@ -353,7 +353,7 @@ export default function Contact() {
                       />
                       <BsFillPencilFill 
                         className="mx-1 text-primary"
-                        size={24}
+                        size={20}
                         onClick={() => {setShowModal(true);setTypeModal("edit"); setIdProduct({
                           id:product.id,
                           name:product.name,
@@ -366,6 +366,11 @@ export default function Contact() {
                   <Card.Body>
                   <Card.Img variant="top" 
                     src= {product.image}
+                    style={{
+                      width: "100%",
+                      maxHeight: "100px",
+                      objectFit: "cover",
+                    }}
                   />
                     <Card.Title
                       className="text-center my-2"

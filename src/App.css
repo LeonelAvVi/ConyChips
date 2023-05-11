@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.bg-green {
+  background-color: green;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -34,5 +38,24 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.animate-component {
+  animation-name: grow-shrink;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes grow-shrink {
+  0% {
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(0.7);
   }
 }

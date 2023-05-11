@@ -7,6 +7,8 @@ import { BsFillPersonFill,BsX,BsCheck, BsFillXCircleFill,BsCartCheckFill,BsCartX
 import Button from 'react-bootstrap/Button';
 import { Container, Row, Col, Modal, Spinner  } from 'react-bootstrap';
 
+import imageBack from './img/back.jpg';
+
 function CardProduct(props) {
   const {id, name, price , image, onSave, cantidadDefault} = props;
   const [show, setShow] = useState(false);
@@ -176,6 +178,7 @@ function App() {
 
   const [typeModal, setTypeModal] = useState("sale");//sale=> vender, closeday=> cierre de caja
 
+  const [loadingProducts, setLoadingProducts] = useState(true);
 
   useEffect(() => {
     test();
@@ -255,6 +258,9 @@ function App() {
       );
       setDataConys(products);
       setConys(products);
+      await new Promise(r => setTimeout(r, 1000));
+      setLoadingProducts(false);
+      // esperar 5 segundos
     }catch(err){
       console.log(err);
     }
@@ -362,8 +368,18 @@ function App() {
         </Modal.Body>
       </Modal>
 
-      <Col className="bg-dark text-light text-center align-self-center p-2"
-      style={{ height: "100vh" }}
+      {
+        loadingProducts?
+        <Container fluid className="fixed-bottom">
+          <Row>
+            <Col className="bg-white text-light text-center align-self-center p-2 pb-5">
+              <img src={imageBack} alt="logo" className="animate-component w-100" />
+            </Col>
+          </Row>
+        </Container>
+        :
+        <Col className="bg-dark text-light text-center align-self-center p-2 pb-5"
+      style={{ minHeight: "100vh"}}
       >
         <div className="d-flex flex-row justify-content-around align-items-center w-full my-2">
           <BsCartXFill className="fs-5 text-whte bg-danger rounded p-2"
@@ -392,7 +408,7 @@ function App() {
           <Row
             className="mx-4"
           >
-            <Button variant="warning" className="w-100 my-2 m-auto"
+            <Button variant="warning" className="w-100 my-2 mb-5"
             onClick={() => {
               setShow(true);
               setTypeModal("closeday");
@@ -403,6 +419,11 @@ function App() {
           </Row>
         </Container>
       </Col>
+      }
+      
+
+
+      
     </>         
   );
 }
